@@ -2,14 +2,13 @@ FROM php:8.0.2-apache
 
 WORKDIR /var/www/html
 
+RUN apt-get update
 RUN docker-php-ext-install pdo_mysql
 
 RUN curl -sL https://deb.nodesource.com/setup_15.x  | bash -
 RUN apt-get -y install nodejs \
     git \
     zip
-
-RUN apt-get update
 
 ARG COMPOSER_ENV
 ARG NPM_ENV=dev
