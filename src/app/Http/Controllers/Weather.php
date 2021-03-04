@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Http;
 
 class Weather extends Controller
 {
-    const APP_URL = 'http://api.openweathermap.org/data/2.5/weather?q=%s&APPID=%s';
+    const APP_URL = 'http://api.openweathermap.org/data/2.5/weather?q=%s&APPID=%s&units=metric';
 
     public function index(Request $request): JsonResponse
     {
@@ -18,7 +18,7 @@ class Weather extends Controller
         array_walk($location, 'trim');
 
         if (count($location) != 2 || !CityModel::where('name', $location[0])->where('country', $location[1])->count()) {
-            return response()->json(['error' => 1]);
+            return response()->json(['error' => 'Wrong location passed.']);
         }
 
         try {
@@ -30,7 +30,7 @@ class Weather extends Controller
 
             return response()->json($response->collect()->toArray());
         } catch (\Exception $e) {
-            return response()->json(['error' => 0]);
+            return response()->json(['error' => 'Error occurred.']);
         }
     }
 }
