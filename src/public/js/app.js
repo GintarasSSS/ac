@@ -1,5 +1,8 @@
 $(function () {
-    $('#city-input').autocomplete({
+    var button = $('#city-submit'),
+        input = $('#city-input');
+
+    input.autocomplete({
         minLength: 3,
         source: function (object, response) {
             $.get(
@@ -15,14 +18,19 @@ $(function () {
                     };
                 }));
             });
-        },
-        select: function (event, ui) {
-            console.log(event.target);
-            console.log(ui);
         }
     });
 
-    $('#city-submit').click(function () {
-        
+    button.click(function () {
+        $(this).prop('disabled', true);
+
+        $.get(
+            '/weather',
+            {
+                location: input.val()
+            }
+        ).done(function (data) {
+
+        });
     });
 });
