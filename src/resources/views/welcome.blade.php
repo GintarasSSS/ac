@@ -32,13 +32,13 @@
                     <div class="input-group">
                         <input type="text" class="form-control" id="city-input" autocomplete="off" placeholder="Enter city name">
                         <div class="input-group-append">
-                            <button class="btn btn-outline-secondary" type="button" id="button-addon2">Show</button>
+                            <button id="city-submit" class="btn btn-outline-secondary" type="button" id="button-addon2">Show</button>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="card mb-4">
+            <div class="card mb-4 d-none">
                 <div class="card-header">
                     Weather
                 </div>

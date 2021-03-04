@@ -1,40 +1,28 @@
 $(function () {
-    // $('#city-input').autoComplete();
-
-    var availableTags = [
-        "ActionScript",
-        "AppleScript",
-        "Asp",
-        "BASIC",
-        "C",
-        "C++",
-        "Clojure",
-        "COBOL",
-        "ColdFusion",
-        "Erlang",
-        "Fortran",
-        "Groovy",
-        "Haskell",
-        "Java",
-        "JavaScript",
-        "Lisp",
-        "Perl",
-        "PHP",
-        "Python",
-        "Ruby",
-        "Scala",
-        "Scheme"
-    ];
-
-    $( "#city-input" ).autocomplete({
+    $('#city-input').autocomplete({
         minLength: 3,
-        source: function () {
+        source: function (object, response) {
             $.get(
-                '/city'
-            );
+                '/city',
+                {
+                    city: object.term
+                }
+            ).done(function (data) {
+                response($.map(data, function (item) {
+                    return {
+                        label: item.name + ',' + item.country,
+                        value: item.name + ',' + item.country
+                    };
+                }));
+            });
         },
-        select: function () {
-
+        select: function (event, ui) {
+            console.log(event.target);
+            console.log(ui);
         }
+    });
+
+    $('#city-submit').click(function () {
+        
     });
 });
