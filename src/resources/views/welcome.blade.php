@@ -38,12 +38,19 @@
                 </div>
             </div>
 
-            <div class="card mb-4 d-none">
+            <div class="card mb-4 d-none" id="weather-response">
                 <div class="card-header">
                     Weather
                 </div>
                 <div class="card-body">
-                    here
+                </div>
+            </div>
+
+            <div class="card mb-4 d-none" id="weather-error">
+                <div class="card-header text-white bg-danger">
+                    Error
+                </div>
+                <div class="card-body">
                 </div>
             </div>
 
