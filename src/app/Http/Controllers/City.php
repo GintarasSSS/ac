@@ -8,10 +8,20 @@ use Illuminate\Http\Request;
 
 class City extends Controller
 {
+    /**
+     * @var CityModel
+     */
+    private $model;
+
+    public function __construct(CityModel $model)
+    {
+        $this->model = $model;
+    }
+
     public function index(Request $request): JsonResponse
     {
         return response()->json(
-            CityModel::where('name', 'like', $request->get('city') . '%')->get()->toArray()
+            $this->model->where('name', 'like', $request->get('city') . '%')->get()->toArray()
         );
     }
 }
