@@ -23,6 +23,6 @@ class CityTest extends TestCase
         $response = $this->get('/city?city=london');
 
         $response->assertStatus(200);
-        $this->assertEquals($result, $response->json());
+        $response->assertExactJson($result);
     }
 }

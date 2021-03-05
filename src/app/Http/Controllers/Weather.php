@@ -11,13 +11,24 @@ class Weather extends Controller
 {
     const APP_URL = 'http://api.openweathermap.org/data/2.5/weather?q=%s&APPID=%s&units=metric';
 
+    /**
+     * @var CityModel
+     */
+    private $model;
+
+    public function __construct(CityModel $model)
+    {
+        $this->model = $model;
+    }
+
     public function index(Request $request): JsonResponse
     {
         $location = explode(',', $request->get('location'));
 
         array_walk($location, 'trim');
 
-        if (count($location) != 2 || !CityModel::where('name', $location[0])->where('country', $location[1])->count()) {
+        if (count($location) != 2
+            || !$this->model->where('name', $location[0])->where('country', $location[1])->count()) {
             return response()->json(['error' => 'Wrong location passed.']);
         }
 
