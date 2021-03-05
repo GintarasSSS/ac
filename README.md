@@ -5,4 +5,5 @@
 # Run:
 
 ```cp .env.example .env```
+
 ```./install.sh```
