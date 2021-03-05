@@ -10,4 +10,4 @@ fi
 
 docker-compose up -d --build php mysql
 
-#docker-compose run --rm php bash -c "chown -R www-data:www-data ./*"
+docker-compose run --rm php bash -c "chown -R www-data:www-data ./*"
