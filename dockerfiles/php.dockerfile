@@ -14,6 +14,7 @@ ARG COMPOSER_ENV
 ARG NPM_ENV=dev
 
 COPY src .
+COPY .env.example .env
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 RUN /usr/bin/composer install ${COMPOSER_ENV} && npm install && npm run ${NPM_ENV}
