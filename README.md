@@ -2,6 +2,10 @@
 
 `Windows 10 Home docker desktop Version 3.1.0 (51484)`
 
+`Docker version 20.10.2, build 2291f61`
+
+`docker-compose version 1.27.4, build 40524192`
+
 # Functionality:
 
 It generates ajax request and displays auto complete dropdown.
